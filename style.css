@@ -293,7 +293,7 @@ h3 span { margin-left: 10px; font-weight: 400; font-size: 13px; color: var(--mut
   .stage { margin: 56px 0; }
   .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .hero__reel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero__reel figure:last-child { grid-column: 1 / -1; }
+  .hero__reel .hero__featured-mobile { grid-column: 1 / -1; order: 1; }
   .wide { width: calc(100vw - 32px); }
   .dr__main { grid-template-columns: minmax(0, 1fr); }
   .dr__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
