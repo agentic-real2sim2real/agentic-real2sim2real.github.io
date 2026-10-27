@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A coding agent turns one real demonstration per task into a simulated scene, randomized demonstrations at scale and a visuomotor policy that runs on a real Franka arm.">
+<title>Agentic Real2Sim2Real</title>
+<meta name="color-scheme" content="dark">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">R↔S</span><span class="brand__name">Agentic Real2Sim2Real</span></a>
+    <a class="bar__paper" href="assets/paper.pdf" target="_blank" rel="noopener">Paper ↗</a>
+  </div>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#top" aria-current="location">Home</a>
+    <a href="#overview">Overview</a>
+    <a class="w-both" href="#real2sim">Real-to-sim</a>
+    <a class="w-sim" href="#demos">Demonstrations</a>
+    <a class="w-sim" href="#eval">Evaluation</a>
+    <a class="w-real" href="#results">Results</a>
+    <a class="w-real" href="#rollouts">Rollouts</a>
+    <a href="#paper">Paper</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero__inner">
+      <h1 class="hero__name" id="hero-title"><span class="hero__line">Agentic Visuomotor Policy Learning via</span> <span class="hero__line nowrap hl-r2s">Real-to-Sim-to-Real</span></h1>
+      <p class="hero__lede">A coding agent turns one real demonstration per task into a simulated scene, randomized demonstrations at scale and a visuomotor policy. The policy is trained only in simulation and then run on a real Franka arm.</p>
+      <div class="hero__buttons">
+        <a class="btn btn--primary" href="assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
+      </div>
+    </div>
+    <div class="hero__reel" aria-label="Real-robot rollouts of the five deployed policies">
+      <figure><video src="assets/deploy/mug_01.mp4" poster="assets/deploy/mug_01.jpg" autoplay muted loop playsinline aria-label="Real robot hangs a green mug on a wooden stand"></video><figcaption>Mug hanging</figcaption></figure>
+      <figure><video src="assets/deploy/tape_01.mp4" poster="assets/deploy/tape_01.jpg" autoplay muted loop playsinline aria-label="Real robot puts a tape roll into a box and closes the lid"></video><figcaption>Tape in box</figcaption></figure>
+      <figure><video src="assets/deploy/cup_02.mp4" poster="assets/deploy/cup_02.jpg" autoplay muted loop playsinline aria-label="Real robot nests three red cups"></video><figcaption>Cup nesting</figcaption></figure>
+      <figure><video src="assets/deploy/board_03_hero.mp4" poster="assets/deploy/board_03_hero.jpg" autoplay muted loop playsinline aria-label="Real robot wipes Sim2Real Gap off a whiteboard with an eraser"></video><figcaption>Whiteboard wiping</figcaption></figure>
+      <figure><video src="assets/deploy/cable_08.mp4" poster="assets/deploy/cable_08.jpg" autoplay muted loop playsinline aria-label="Real robot routes a network cable into a clip"></video><figcaption>Cable routing</figcaption></figure>
+    </div>
+    <p class="hero__note">Real-time policy rollouts on the real robot, no demonstrations.</p>
+  </section>
+
+  <div class="content">
+    <section class="stage" id="overview" aria-labelledby="overview-title">
+      <h2 id="overview-title">From one demonstration to a deployed policy</h2>
+      <figure>
+        <img class="figure-img" src="assets/teaser.jpg" width="2400" height="582" alt="Overview: single real demonstrations of four tasks, a grid of randomized simulated scenes, and real policy rollouts near task completion, connected by the agent commands run-real2sim and run-sim2real">
+        <figcaption>Left: one real demonstration per task. Middle: the agent reconstructs each scene in simulation (<code>/run-real2sim</code>) and generates randomized demonstrations at scale. Right: the visuomotor policy it trains (<code>/run-sim2real</code>) running on the real robot, near the end of each task.</figcaption>
+      </figure>
+      <figure class="fig-sep">
+        <img class="figure-img" src="assets/method.jpg" width="2400" height="1306" alt="Method: the coding agent runs real-to-sim reconstruction for rigid, articulated, deformable and erasable-ink scenes, then writes a task expert, designs domain randomization, generates demonstrations at scale and trains and evaluates a policy">
+        <figcaption>The coding agent runs two workflows. <b>Real-to-sim</b> reconstructs the scene from the recording, reproduces the demonstration in simulation, and reports which sim-to-real gaps were measured and which stay uncertain. <b>Sim-to-real</b> writes a task expert and revises it from test rollouts, designs domain randomization informed by the gap report, generates demonstrations at scale, and trains and evaluates the policy in closed loop. A human records the demonstration, sets up each real trial and starts every robot run.</figcaption>
+      </figure>
+    </section>
+
+    <section class="stage w-both" id="real2sim" aria-labelledby="real2sim-title">
+      <h2 id="real2sim-title">Real-to-sim beyond rigid objects</h2>
+      <div class="chips" role="tablist" aria-label="Task">
+        <button role="tab" aria-selected="true" data-task="mug" data-note="Rigid: mug and stand, the scene behind the deployed mug policy. The simulation runs the agent&rsquo;s task expert in the reconstructed scene.">Rigid</button>
+        <button role="tab" aria-selected="false" data-task="box" data-note="Articulated: box with a hinged lid and a tape roll. The simulation runs the agent&rsquo;s task expert in the reconstructed scene.">Articulated</button>
+        <button role="tab" aria-selected="false" data-task="cup" data-note="Nested contact: three cups. The simulation replays the demonstration&rsquo;s recorded robot commands.">Nested</button>
+        <button role="tab" aria-selected="false" data-task="cable" data-note="Deformable: network cable and clip. The simulation runs the agent&rsquo;s task expert in the reconstructed scene.">Deformable</button>
+        <button role="tab" aria-selected="false" data-task="whiteboard" data-note="Erasable ink: whiteboard and eraser. The simulation runs the agent&rsquo;s task expert, and the ink wipes off in simulation too.">Erasable ink</button>
+      </div>
+      <figure>
+        <div class="r2s" id="r2s">
+          <div class="media r2s__pane"><span class="r2s__label r2s__label--real" aria-hidden="true">Real</span><video muted playsinline preload="auto" poster="assets/r2s/mug_real.jpg" src="assets/r2s/mug_real.mp4" aria-label="Real demonstration recorded by a fixed camera"></video></div>
+          <div class="media r2s__pane"><span class="r2s__label r2s__label--sim" aria-hidden="true">Sim</span><video muted playsinline preload="auto" poster="assets/r2s/mug_sim.jpg" src="assets/r2s/mug_sim.mp4" aria-label="The same task in the reconstructed simulation, rendered from the same camera"></video></div>
+        </div>
+        <div class="r2s__bar">
+          <button class="r2s__play" type="button" aria-label="Pause">&#10074;&#10074;</button>
+          <input class="r2s__seek" type="range" min="0" max="1000" value="0" aria-label="Scrub both videos">
+          <span class="r2s__time" aria-live="off">0.0 s</span>
+        </div>
+        <figcaption><span id="r2s-note">Rigid: mug and stand, the scene behind the deployed mug policy. The simulation runs the agent&rsquo;s task expert in the reconstructed scene.</span> Both clips play in real time from the same camera and start together; the shorter one holds its last frame.</figcaption>
+      </figure>
+    </section>
+
+    <section class="stage w-sim" id="demos" aria-labelledby="demos-title">
+      <h2 id="demos-title">Randomized demonstrations at scale</h2>
+      <p class="lede">The agent-written task expert collects demonstrations under randomized lighting, materials, cameras, image effects, object layouts, physics, controller dynamics and external pushes. Pick a kind of randomization to see training episodes that have the most of it, with the values sampled for each one.</p>
+      <div class="dr" id="dr">
+        <div class="dr__tasks" role="tablist" aria-label="Task"></div>
+        <div class="dr__bar">
+          <div class="dr__kinds" role="tablist" aria-label="Kind of randomization"></div>
+          <div class="dr__cams" role="group" aria-label="Camera">
+            <button data-cam="camera_1" aria-pressed="true">Camera 1</button><button data-cam="camera_2" aria-pressed="false">Camera 2</button>
+          </div>
+        </div>
+        <div class="dr__main">
+          <div class="dr__player">
+            <div class="media"><video muted loop playsinline autoplay aria-label="Selected simulated training episode"></video></div>
+          </div>
+          <dl class="dr__card" aria-live="polite"></dl>
+        </div>
+        <div class="dr__grid"></div>
+        <p class="dr__note">Training-set videos as the policy sees them: one frame per supervised sample, so motion is not real time. Values are the episode's recorded draws; scales are relative to the reconstructed scene.</p>
+      </div>
+    </section>
+
+    <section class="stage w-sim" id="eval" aria-labelledby="eval-title">
+      <h2 id="eval-title">Closed-loop evaluation in sim and real</h2>
+      <div class="pair">
+        <figure>
+          <div class="media"><video src="assets/eval/box_broad_977206.mp4" poster="assets/eval/box_broad_977206.jpg" autoplay muted loop playsinline aria-label="Simulated evaluation: the policy puts the tape in the box and closes the lid under broad randomization"></video></div>
+          <figcaption><span class="tag tag--sim">Sim</span> The policy in closed loop under broad randomization.</figcaption>
+        </figure>
+        <figure>
+          <div class="media"><video src="assets/deploy/tape_03.mp4" poster="assets/deploy/tape_03.jpg" autoplay muted loop playsinline aria-label="Real robot: the same policy puts the tape in the box and closes the lid"></video></div>
+          <figcaption><span class="tag tag--real">Real</span> The same checkpoint on the real robot.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+    <section class="stage w-real" id="results" aria-labelledby="results-title">
+      <h2 id="results-title">Results</h2>
+      <div class="table-wrap">
+        <table class="results" style="min-width:640px">
+<thead><tr><th scope="col">Task</th><th scope="col">Sim nominal</th><th scope="col">Sim mild</th><th scope="col">Sim broad</th><th scope="col">Real robot</th></tr></thead>
+<tbody>
+<tr><th scope="row">Mug hanging</th><td><strong>100%</strong><span class="sub">1/1</span></td><td><strong>100%</strong><span class="sub">20/20</span></td><td><strong>100%</strong><span class="sub">20/20</span></td><td class="num">83.3%<span class="sub">10/12</span></td></tr>
+<tr><th scope="row">Tape in box</th><td><strong>100%</strong><span class="sub">1/1</span></td><td><strong>45%</strong><span class="sub">9/20</span></td><td><strong>75%</strong><span class="sub">15/20</span></td><td class="num">60%<span class="sub">6/10</span><span class="sub">4 more with tape in, lid open</span></td></tr>
+<tr><th scope="row">Cup nesting</th><td><strong>100%</strong><span class="sub">1/1</span></td><td><strong>95%</strong><span class="sub">19/20</span></td><td><strong>90%</strong><span class="sub">18/20</span></td><td class="num">63.6%<span class="sub">7/11</span></td></tr>
+<tr><th scope="row">Whiteboard wiping</th><td><strong>100%</strong><span class="sub">1/1</span></td><td><strong>75%</strong><span class="sub">15/20</span></td><td><strong>55%</strong><span class="sub">11/20</span></td><td class="num">60%<span class="sub">3/5</span><span class="sub">2 more wiped, eraser not released; grasp-closure assist</span></td></tr>
+<tr><th scope="row">Cable routing</th><td><strong>100%</strong><span class="sub">1/1</span></td><td><strong>75%</strong><span class="sub">15/20</span></td><td><strong>50%</strong><span class="sub">10/20</span></td><td class="num">75%<span class="sub">3/4</span></td></tr>
+</tbody></table>
+      </div>
+    </section>
+
+    <section class="stage w-real" id="rollouts" aria-labelledby="rollouts-title">
+      <h2 id="rollouts-title">Real rollouts</h2>
+      <div class="chips" id="gallery-tasks" role="tablist" aria-label="Task"></div>
+      <div class="gallery" id="gallery">
+        <div class="media"><video muted loop playsinline preload="metadata"></video></div>
+        <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Previous rollout">&#8249;</button>
+        <button class="gallery__nav gallery__nav--next" type="button" aria-label="Next rollout">&#8250;</button>
+        <span class="gallery__count" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section class="stage" id="paper" aria-labelledby="paper-title">
+      <h2 id="paper-title">Paper</h2>
+      <a class="paper" href="assets/paper.pdf" target="_blank" rel="noopener">
+        <img src="assets/paper_page1.jpg" width="510" height="660" alt="First page of the paper" loading="lazy">
+        <span>Agentic Visuomotor Policy Learning via <span class="nowrap">Real-to-Sim-to-Real</span><small>CoRL 2026 late-breaking results, extended abstract</small></span>
+      </a>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>Real results recorded October 16–26, 2026; simulation reporting suites October 27, 2026.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

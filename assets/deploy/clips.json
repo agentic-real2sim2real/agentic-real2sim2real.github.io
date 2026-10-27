@@ -1,0 +1,355 @@
+{
+ "_note": "Each clip spans the trial's robot-clock window (video_deployments.json) from 1 s before the first command to 1 s after the robot stops, tone-mapped HLG -> SDR, 1280x720 H.264, real time. Outcomes were checked by eye on frame grids of each whole trial (not only the end frame).",
+ "clips": [
+  {
+   "clip": "mug_01.mp4",
+   "poster": "mug_01.jpg",
+   "task": "mug_hanging_1016",
+   "policy": "ACT checkpoint 008818",
+   "trial": "deployments/mug_1016_008818_20261024T051932Z/trial_01",
+   "video": "IMG_4028.MOV",
+   "video_window_s": [
+    42.0,
+    70.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "mug_02.mp4",
+   "poster": "mug_02.jpg",
+   "task": "mug_hanging_1016",
+   "policy": "ACT checkpoint 008818",
+   "trial": "deployments/mug_1016_008818_20261024T051932Z/trial_02",
+   "video": "IMG_4028.MOV",
+   "video_window_s": [
+    103.0,
+    128.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "mug_04.mp4",
+   "poster": "mug_04.jpg",
+   "task": "mug_hanging_1016",
+   "policy": "ACT checkpoint 008818",
+   "trial": "deployments/mug_1016_008818_20261024T051932Z/trial_04",
+   "video": "IMG_4028.MOV",
+   "video_window_s": [
+    241.0,
+    271.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "mug_08.mp4",
+   "poster": "mug_08.jpg",
+   "task": "mug_hanging_1016",
+   "policy": "ACT checkpoint 008818",
+   "trial": "deployments/mug_1016_008818_20261024T051932Z/trial_08",
+   "video": "IMG_4028.MOV",
+   "video_window_s": [
+    513.0,
+    557.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "mug_09.mp4",
+   "poster": "mug_09.jpg",
+   "task": "mug_hanging_1016",
+   "policy": "ACT checkpoint 008818",
+   "trial": "deployments/mug_1016_008818_20261024T051932Z/trial_09",
+   "video": "IMG_4028.MOV",
+   "video_window_s": [
+    592.0,
+    622.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "mug_10.mp4",
+   "poster": "mug_10.jpg",
+   "task": "mug_hanging_1016",
+   "policy": "ACT checkpoint 008818",
+   "trial": "deployments/mug_1016_008818_20261024T051932Z/trial_10",
+   "video": "IMG_4028.MOV",
+   "video_window_s": [
+    657.0,
+    685.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "tape_01.mp4",
+   "poster": "tape_01.jpg",
+   "task": "tape_box_lid_1023",
+   "policy": "ACT checkpoint 002748",
+   "trial": "deployments/tape_002748_20261024T022825Z/trial_01",
+   "video": "IMG_4020.MOV",
+   "video_window_s": [
+    20.0,
+    73.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "tape_03.mp4",
+   "poster": "tape_03.jpg",
+   "task": "tape_box_lid_1023",
+   "policy": "ACT checkpoint 002748",
+   "trial": "deployments/tape_002748_20261024T022825Z/trial_03",
+   "video": "IMG_4020.MOV",
+   "video_window_s": [
+    212.0,
+    254.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "tape_04.mp4",
+   "poster": "tape_04.jpg",
+   "task": "tape_box_lid_1023",
+   "policy": "ACT checkpoint 002748",
+   "trial": "deployments/tape_002748_20261024T022825Z/trial_04",
+   "video": "IMG_4020.MOV",
+   "video_window_s": [
+    322.0,
+    361.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "tape_06.mp4",
+   "poster": "tape_06.jpg",
+   "task": "tape_box_lid_1023",
+   "policy": "ACT checkpoint 002748",
+   "trial": "deployments/tape_002748_20261024T022825Z/trial_06",
+   "video": "IMG_4020.MOV",
+   "video_window_s": [
+    531.0,
+    571.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "tape_08.mp4",
+   "poster": "tape_08.jpg",
+   "task": "tape_box_lid_1023",
+   "policy": "ACT checkpoint 002748",
+   "trial": "deployments/tape_002748_20261024T022825Z/trial_08",
+   "video": "IMG_4020.MOV",
+   "video_window_s": [
+    727.0,
+    761.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "cup_02.mp4",
+   "poster": "cup_02.jpg",
+   "task": "cup_nesting_1025",
+   "policy": "ACT checkpoint 021900",
+   "trial": "deployments/1025_four_prepared/cup/trial_02",
+   "video": "IMG_4091.MOV",
+   "video_window_s": [
+    3.0,
+    30.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "cup_03.mp4",
+   "poster": "cup_03.jpg",
+   "task": "cup_nesting_1025",
+   "policy": "ACT checkpoint 021900",
+   "trial": "deployments/1025_four_prepared/cup/trial_03",
+   "video": "IMG_4091.MOV",
+   "video_window_s": [
+    66.0,
+    96.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "cup_04.mp4",
+   "poster": "cup_04.jpg",
+   "task": "cup_nesting_1025",
+   "policy": "ACT checkpoint 021900",
+   "trial": "deployments/1025_four_prepared/cup/trial_04",
+   "video": "IMG_4091.MOV",
+   "video_window_s": [
+    139.0,
+    165.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "cup_06.mp4",
+   "poster": "cup_06.jpg",
+   "task": "cup_nesting_1025",
+   "policy": "ACT checkpoint 021900",
+   "trial": "deployments/1025_four_prepared/cup/trial_06",
+   "video": "IMG_4091.MOV",
+   "video_window_s": [
+    273.0,
+    300.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "cup_07.mp4",
+   "poster": "cup_07.jpg",
+   "task": "cup_nesting_1025",
+   "policy": "ACT checkpoint 021900",
+   "trial": "deployments/1025_four_prepared/cup/trial_07",
+   "video": "IMG_4091.MOV",
+   "video_window_s": [
+    342.0,
+    368.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "cup1023_02.mp4",
+   "poster": "cup1023_02.jpg",
+   "task": "cup_nesting_1023",
+   "policy": "ACT checkpoint 002972",
+   "trial": "deployments/cup_1023_002972_20261024T043319Z/trial_02",
+   "video": "IMG_4025.MOV",
+   "video_window_s": [
+    0.0,
+    28.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "cup1023_03.mp4",
+   "poster": "cup1023_03.jpg",
+   "task": "cup_nesting_1023",
+   "policy": "ACT checkpoint 002972",
+   "trial": "deployments/cup_1023_002972_20261024T043319Z/trial_03",
+   "video": "IMG_4025.MOV",
+   "video_window_s": [
+    71.0,
+    101.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "board_03.mp4",
+   "poster": "board_03.jpg",
+   "task": "whiteboard_wiping_1025",
+   "policy": "ACT checkpoint 021875, one-shot gripper-closure override",
+   "trial": "deployments/1025_four_prepared/whiteboard_immediate_grasp/trial_03",
+   "video": "IMG_4095.MOV",
+   "video_window_s": [
+    27.0,
+    79.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "board_04.mp4",
+   "poster": "board_04.jpg",
+   "task": "whiteboard_wiping_1025",
+   "policy": "ACT checkpoint 021875, one-shot gripper-closure override",
+   "trial": "deployments/1025_four_prepared/whiteboard_immediate_grasp/trial_04",
+   "video": "IMG_4095.MOV",
+   "video_window_s": [
+    131.0,
+    183.0
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "board_07.mp4",
+   "poster": "board_07.jpg",
+   "task": "whiteboard_wiping_1025",
+   "policy": "ACT checkpoint 021875, one-shot gripper-closure override",
+   "trial": "deployments/1025_four_prepared/whiteboard_immediate_grasp/trial_07",
+   "video": "IMG_4095.MOV",
+   "video_window_s": [
+    523.0,
+    568.6
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "board_05.mp4",
+   "poster": "board_05.jpg",
+   "task": "whiteboard_wiping_1025",
+   "policy": "ACT checkpoint 021875, one-shot gripper-closure override",
+   "trial": "deployments/1025_four_prepared/whiteboard_immediate_grasp/trial_05",
+   "video": "IMG_4095.MOV",
+   "video_window_s": [
+    245.0,
+    327.0
+   ],
+   "outcome": "partial",
+   "note": "partial: board wiped clean, eraser never released"
+  },
+  {
+   "clip": "cable_06.mp4",
+   "poster": "cable_06.jpg",
+   "task": "cable_routing_1025_wide50",
+   "policy": "ACT checkpoint 021825",
+   "trial": "deployments/cable_1025_wide50_021825_resetminus10mm/trial_06",
+   "video": "IMG_4100.MOV",
+   "video_window_s": [
+    73.2,
+    112.5
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "cable_07.mp4",
+   "poster": "cable_07.jpg",
+   "task": "cable_routing_1025_wide50",
+   "policy": "ACT checkpoint 021825",
+   "trial": "deployments/cable_1025_wide50_021825_resetminus10mm/trial_07",
+   "video": "IMG_4100.MOV",
+   "video_window_s": [
+    153.5,
+    199.3
+   ],
+   "outcome": "success",
+   "note": ""
+  },
+  {
+   "clip": "cable_08.mp4",
+   "poster": "cable_08.jpg",
+   "task": "cable_routing_1025_wide50",
+   "policy": "ACT checkpoint 021825",
+   "trial": "deployments/cable_1025_wide50_021825_resetminus10mm/trial_08",
+   "video": "IMG_4100.MOV",
+   "video_window_s": [
+    242.7,
+    270.9
+   ],
+   "outcome": "success",
+   "note": ""
+  }
+ ]
+}
