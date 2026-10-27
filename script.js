@@ -80,7 +80,7 @@ function showEpisode(ep) {
   const v = dr.querySelector('.dr__player video');
   v.poster = clip(ep) + '.jpg'; v.src = clip(ep) + '.mp4';
   if (!reduced) v.play().catch(() => {}); else v.controls = true;
-  dr.querySelector('.dr__card').innerHTML = `<div class="dr__title"><dt>Episode</dt><dd>${ep}</dd></div>` + card(DR.task.episodes[ep], DR.kind.kind);
+  dr.querySelector('.dr__card').innerHTML = card(DR.task.episodes[ep], DR.kind.kind);
   dr.querySelectorAll('.dr__grid button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.ep === ep));
 }
 function showKind(kind) {
