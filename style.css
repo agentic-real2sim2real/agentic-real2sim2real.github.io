@@ -119,6 +119,7 @@ h2 { font-size: 1.5rem; font-weight: 600; letter-spacing: -.01em; line-height: 1
 
 .content { max-width: 880px; margin: 0 auto; padding: 0 24px; }
 .stage { margin: 72px 0; text-align: center; }
+#discussion > p, #discussion .discussion__point { text-align: left; }
 .stage[class*='w-'] h2::before {
   content: ''; display: inline-block; width: 10px; height: 10px; margin-right: 12px;
   border-radius: 2px; background: var(--world); vertical-align: .12em;
@@ -299,3 +300,9 @@ h3 span { margin-left: 10px; font-weight: 400; font-size: 13px; color: var(--mut
   .pair, .r2s { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } .hl-r2s { animation: none; } }
+
+/* Expandable discussion subsections. */
+#discussion .discussion__point { border-bottom: 1px solid #d9dde2; padding: 16px 0; }
+#discussion .discussion__point summary { cursor: pointer; font-size: 1.05rem; font-weight: 600; }
+#discussion .discussion__point summary:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+#discussion .discussion__point[open] summary { margin-bottom: 12px; }
